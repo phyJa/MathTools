@@ -91,6 +91,6 @@ function mdc(...numbers) {
     return product/mmcs
 }
 
-console.log(mdc(3, 4))
+console.log(mmc(2, 6, 56))
 
 //console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
