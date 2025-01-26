@@ -38,6 +38,45 @@ function decomposeInPrimeNumbers(number) {
 
 }
 
-let testNum = 56015
+function mmc(...numbers) {
+    
+    let newNumbers = numbers
 
-console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
+    let mmc = 1
+
+    let divisor = 2
+
+    let divisorWasApplied
+    
+    while(
+        newNumbers.some(
+            (element) => (element > 1)
+        )
+    ) {
+        divisorWasApplied = false
+        for(let i = 0; i < newNumbers.length; i++) {
+            if(isPrime(divisor)) {
+                if(newNumbers[i] % divisor === 0) {
+
+                    newNumbers[i] /= divisor
+
+                    if(!divisorWasApplied) {
+                        mmc *= divisor
+                        divisorWasApplied = true
+                    }
+                } 
+            }
+        }
+
+        if(
+            newNumbers.every(
+                (number) => number % divisor !== 0
+            )
+        )  divisor++
+    }
+    return mmc
+}
+
+console.log(mmc(5, 6, 7, 80))
+
+//console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
