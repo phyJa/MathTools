@@ -77,6 +77,20 @@ function mmc(...numbers) {
     return mmc
 }
 
-console.log(mmc(5, 6, 7, 80))
+function mdc(...numbers) {
+    
+    let newNumbers = numbers
+    
+    let product = 1
+    
+    for(let i = 0; i < newNumbers.length; i++) 
+        product *= newNumbers[i]
+    
+    let mmcs = mmc(...newNumbers)
+   
+    return product/mmcs
+}
+
+console.log(mdc(3, 4))
 
 //console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
