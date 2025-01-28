@@ -80,17 +80,59 @@ function mmc(...numbers) {
 function mdc(...numbers) {
     
     let newNumbers = numbers
+
+    let mdc = 1
+
+    let divisor = 2
     
-    let product = 1
+    while(
+        newNumbers.some(
+            (element) => (element > 1)
+        )
+    ) {
+
+        if(
+            newNumbers.every(
+                (number) => number % divisor === 0
+            )
+            
+            &&
+
+            isPrime(divisor)
+        ) {
+
+            mdc *= divisor
+
+            for(let i = 0; i < newNumbers.length; i++)
+                newNumbers[i] /= divisor
     
-    for(let i = 0; i < newNumbers.length; i++) 
-        product *= newNumbers[i]
-    
-    let mmcs = mmc(...newNumbers)
-   
-    return product/mmcs
+        }
+        
+        else if(
+            newNumbers.every(
+            (number) => number % divisor !== 0
+        )) divisor++
+
+        else {
+            
+            for(let i = 0; i < newNumbers.length; i++) {
+                if(isPrime(divisor)) {
+                    if(newNumbers[i] % divisor === 0) {
+                        newNumbers[i] /= divisor
+                    } 
+                } else divisor++
+            }
+        }
+       
+        
+        //console.log(newNumbers)
+        
+    }
+
+    return mdc
+
 }
 
-console.log(mmc(2, 6, 56))
+console.log(mdc(99, 9, 69))
 
 //console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
