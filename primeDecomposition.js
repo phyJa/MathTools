@@ -133,6 +133,27 @@ function mdc(...numbers) {
 
 }
 
-console.log(mdc(99, 9, 69))
+function simplifyFraction(numerator, denominator) {
+    
+    let maxDivisor = mdc(numerator, denominator)
 
-//console.log(`The prime factors of ${testNum} are: ${decomposeInPrimeNumbers(testNum)}`)
+    if(maxDivisor === 1)
+        return [numerator, denominator, "Cannot be simplified"]
+    else
+        return [numerator/maxDivisor, denominator/maxDivisor]
+
+}
+
+function displaySimplification(fraction) {
+    let numerator = fraction[0]
+    let denominator = fraction[1]
+    if(fraction[2])
+        return `${numerator}/${denominator} cannot be simplified.`
+    else
+        return `${numerator}/${denominator}`
+
+}
+
+console.log(displaySimplification(simplifyFraction(90, 10)))
+// testNum = 255
+//console.log(`The prime decomposition of ${testNum} is: ${decomposeInPrimeNumbers(testNum)}`)
